@@ -1,0 +1,23 @@
+# Python virtual environment
+netlab-venv/
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Credentials / secrets — NEVER commit these
+credentials.py
+secrets.yaml
+secrets.yml
+.env
+*_secret*
+passwords*
+
+# Config backups may contain sensitive data — review before committing
+backups/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
