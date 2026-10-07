@@ -84,13 +84,13 @@
       <text x="1157" y="286" text-anchor="middle" fill="#e6edf3" font-weight="600">zabbix-agent</text>
       <text x="1157" y="302" text-anchor="middle" fill="#8b949e" font-size="10">agent2 — done</text>
 
-      <rect x="900" y="322" width="165" height="46" rx="8" fill="#0d1117" stroke="#d29922" stroke-width="1.2"/>
+      <rect x="900" y="322" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
       <text x="982" y="340" text-anchor="middle" fill="#e6edf3" font-weight="600">NTP</text>
-      <text x="982" y="356" text-anchor="middle" fill="#8b949e" font-size="10">cturra/ntp — planned</text>
+      <text x="982" y="356" text-anchor="middle" fill="#8b949e" font-size="10">cturra/ntp — done</text>
 
-      <rect x="1075" y="322" width="165" height="46" rx="8" fill="#0d1117" stroke="#d29922" stroke-width="1.2"/>
+      <rect x="1075" y="322" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
       <text x="1157" y="340" text-anchor="middle" fill="#e6edf3" font-weight="600">Syslog</text>
-      <text x="1157" y="356" text-anchor="middle" fill="#8b949e" font-size="10">balabit/syslog-ng — planned</text>
+      <text x="1157" y="356" text-anchor="middle" fill="#8b949e" font-size="10">balabit/syslog-ng — done</text>
 
       <rect x="900" y="376" width="165" height="46" rx="8" fill="#0d1117" stroke="#6e7681" stroke-width="1.2" stroke-dasharray="3 2"/>
       <text x="982" y="394" text-anchor="middle" fill="#8b949e" font-weight="600">TACACS+</text>

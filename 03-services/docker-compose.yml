@@ -45,5 +45,26 @@ services:
     depends_on:
       - zabbix-server
 
+  ntp:
+    image: cturra/ntp
+    container_name: ntp
+    restart: unless-stopped
+    cap_add:
+      - SYS_TIME
+      - SYS_NICE
+    ports:
+      - "123:123/udp"
+
+  syslog:
+    image: balabit/syslog-ng:latest
+    container_name: syslog
+    restart: unless-stopped
+    ports:
+      - "514:514/udp"
+      - "514:514/tcp"
+    volumes:
+      - syslog_data:/var/log
+
 volumes:
   db_data:
+  syslog_data:

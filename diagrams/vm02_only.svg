@@ -1,0 +1,46 @@
+<svg viewBox="0 0 460 510" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="460" height="510" fill="#0d1117"/>
+
+  <rect x="40" y="40" width="380" height="430" rx="12" fill="#0d1117" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="230" y="68" text-anchor="middle" fill="#e6edf3" font-size="14" font-weight="600">VM02 — Control_VM (Rocky 10.2)</text>
+  <text x="230" y="88" text-anchor="middle" fill="#8b949e" font-size="11">192.168.1.231 static · admin+sudo · Docker Engine</text>
+
+  <g font-size="11.5">
+    <rect x="60" y="104" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
+    <text x="142" y="122" text-anchor="middle" fill="#e6edf3" font-weight="600">mysql-server</text>
+    <text x="142" y="138" text-anchor="middle" fill="#8b949e" font-size="10">mysql:8.0 — done</text>
+
+    <rect x="235" y="104" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
+    <text x="317" y="122" text-anchor="middle" fill="#e6edf3" font-weight="600">zabbix-server</text>
+    <text x="317" y="138" text-anchor="middle" fill="#8b949e" font-size="10">7.0 LTS — done</text>
+
+    <rect x="60" y="158" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
+    <text x="142" y="176" text-anchor="middle" fill="#e6edf3" font-weight="600">zabbix-web</text>
+    <text x="142" y="192" text-anchor="middle" fill="#8b949e" font-size="10">nginx+php — done</text>
+
+    <rect x="235" y="158" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
+    <text x="317" y="176" text-anchor="middle" fill="#e6edf3" font-weight="600">zabbix-agent</text>
+    <text x="317" y="192" text-anchor="middle" fill="#8b949e" font-size="10">agent2 — done</text>
+
+    <rect x="60" y="212" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
+    <text x="142" y="230" text-anchor="middle" fill="#e6edf3" font-weight="600">NTP</text>
+    <text x="142" y="246" text-anchor="middle" fill="#8b949e" font-size="10">cturra/ntp — done</text>
+
+    <rect x="235" y="212" width="165" height="46" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1.2"/>
+    <text x="317" y="230" text-anchor="middle" fill="#e6edf3" font-weight="600">Syslog</text>
+    <text x="317" y="246" text-anchor="middle" fill="#8b949e" font-size="10">balabit/syslog-ng — done</text>
+
+    <rect x="60" y="266" width="165" height="46" rx="8" fill="#0d1117" stroke="#6e7681" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="142" y="284" text-anchor="middle" fill="#8b949e" font-weight="600">TACACS+</text>
+    <text x="142" y="300" text-anchor="middle" fill="#8b949e" font-size="10">image unverified/stale</text>
+
+    <rect x="235" y="266" width="165" height="46" rx="8" fill="#0d1117" stroke="#d29922" stroke-width="1.2"/>
+    <text x="317" y="284" text-anchor="middle" fill="#e6edf3" font-weight="600">Automation</text>
+    <text x="317" y="300" text-anchor="middle" fill="#8b949e" font-size="10">Netmiko/Jinja2 — planned</text>
+  </g>
+
+  <rect x="60" y="324" width="340" height="80" rx="8" fill="#0d1117" stroke="#2ea043" stroke-width="1" stroke-dasharray="2 2"/>
+  <text x="230" y="348" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="600">Web UI access (zabbix-web container)</text>
+  <text x="230" y="366" text-anchor="middle" fill="#8b949e" font-size="11">http://192.168.1.231/ — verified working</text>
+  <text x="230" y="384" text-anchor="middle" fill="#8b949e" font-size="11">agent interface fixed: 127.0.0.1 → zabbix-agent DNS</text>
+</svg>

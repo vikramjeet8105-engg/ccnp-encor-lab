@@ -77,7 +77,14 @@ docker exec -it zabbix-server sh -c "wget -qO- -T 2 http://127.0.0.1:10050 2>&1 
 **Fix** (Zabbix UI → Data collection → Hosts → Zabbix server → Agent interface): changed "Connect to" from IP `127.0.0.1` to **DNS** `zabbix-agent` (the container's Compose service name). Confirmed fixed — dashboard went from "1 Not available" to "1 Available."
 
 ### Verified surviving a reboot
-`docker compose stop` → clean VM shutdown (`sudo shutdown -h now`) → ESXi power-on → `docker compose up -d` (no service name, brings the whole stack back) restarted all containers correctly. The stack is not just "working once," it's durable across a restart cycle.
+`docker compose stop` → clean VM shutdown (`sudo shutdown -h now`) → ESXi power-on → `docker compose up -d` (no service name, brings the whole stack back) restarted all containers correctly. The stack is not just "working once," it's durable across a restart cycle. Note: after a reboot, `docker compose ps` (no `-a`) can show nothing at first even though everything is fine — `restart: unless-stopped` deliberately does not auto-start a service that was manually `stop`ped before shutdown; `docker compose up -d` brings it back.
+
+### NTP and syslog
+Added as two more containers in the same stack:
+5. **`ntp`** (`cturra/ntp`, with `cap_add: [SYS_TIME, SYS_NICE]` — this image needs just enough extra Linux capability to adjust the system clock, deliberately avoiding the much broader `--privileged` flag). Published on `123/udp`.
+6. **`syslog`** (`balabit/syslog-ng:latest` — maintained by the actual creators of syslog-ng). Published on `514/udp` and `514/tcp` since network devices commonly use either; received logs persist in a named volume (`syslog_data`).
+
+Both images were chosen after checking Docker Hub directly for pull counts and last-updated dates — unlike TACACS+ (see Status below), both had a clear, actively-maintained best choice.
 
 ## Lessons learned
 - **Verify the actual OS version before trusting a documented package URL.** Rocky 10 ≠ the Rocky 9 the original plan assumed — caught by checking `repo.zabbix.com` directly rather than guessing.
@@ -97,8 +104,8 @@ Decided role (build order: AD DS first, everything else depends on it):
 - [x] `Control_VM` provisioned: non-root admin+sudo, root SSH disabled, static IP, Docker installed
 - [x] Zabbix stack (DB + server + web + agent) built, verified, survives a reboot cycle
 - [x] Self-monitoring bug found and fixed (agent interface `127.0.0.1` → `zabbix-agent`)
-- [ ] NTP container (`cturra/ntp` — verified well-maintained, not yet deployed)
-- [ ] Syslog container (`balabit/syslog-ng` — verified well-maintained, not yet deployed)
+- [x] NTP container (`cturra/ntp`) — deployed and healthy
+- [x] Syslog container (`balabit/syslog-ng`) — deployed and healthy
 - [ ] TACACS+ container — **no good prebuilt image exists** (best options are 5 years stale); likely path is building `dchidell/docker-tacacs`'s Dockerfile from source rather than pulling a stale image, or deferring in favor of Windows NPS/RADIUS for AAA coverage
 - [ ] Automation tooling container (Netmiko/Jinja2) — not started
 - [ ] Windows Server VM (`VM01`) — role decided, not built
